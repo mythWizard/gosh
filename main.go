@@ -11,6 +11,7 @@ import (
 
 func execInput(input string) error {
 	input = strings.TrimSuffix(input, "\n")
+	input = strings.TrimSuffix(input, "\r")
 
 	args := strings.Split(input, " ")
 

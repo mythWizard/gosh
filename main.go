@@ -19,7 +19,7 @@ func execInput(input string) error {
 	switch args[0] {
 	case "cd":
 		if len(args) < 2 {
-			return errors.New("Path required.")
+			return errors.New("path required")
 		}
 		return os.Chdir(args[1])
 	case "exit":

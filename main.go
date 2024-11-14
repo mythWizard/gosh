@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"os/user"
 	"strings"
 )
 
@@ -36,7 +37,10 @@ func execInput(input string) error {
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	for {
-		fmt.Print("> ")
+		currentUser, _ := user.Current()
+		hostname, _ := os.Hostname()
+		cwd, _ := os.Getwd()
+		fmt.Printf("%s@%s:%s> ", currentUser.Username, hostname, cwd)
 		input, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
